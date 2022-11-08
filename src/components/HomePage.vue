@@ -1,6 +1,7 @@
 <script setup>
 
-</script>
+</script> 
+
 
 <template>
   <div class="main">
@@ -17,18 +18,24 @@
     <section class="middle">
       <ul>
           <li v-for="item in items" :key="item.id">
-            <ActivityListItem :title="item.title" :message="item.message" />
+            <router-link :to="item.url">
+                <ActivityListItem :title="item.title" :message="item.message" :url="item.url"/>
+            </router-link>
           </li>
         </ul>
     </section>
+    <section class="page-number">
+      <span>总数:{{items.length}}</span>
+    </section>
     <footer class="bottom">
-      <table>
-        <tr>
-          <td v-for="item in links" :key="item.id">
-            <a :href="item.url" target="_blank" >{{item.title}}</a>
-          </td>
-        </tr>
-      </table>
+        <dl>
+          <dt>网站</dt>
+            <dd>
+              <div v-for="item in links" :key="item.id" >
+                <a :href="item.url" target="_blank" >{{item.title}}</a>
+              </div>
+            </dd>
+        </dl>
     </footer>
   </div>
   </div>
@@ -41,9 +48,16 @@ export default {
   data() {
     return {
       items: [
-        {
-          "title": "The first rule",
+      {
+          "title": "Element",
           "message": "keep it",
+          "url": "/elementPage",
+          "id": "1"
+        },
+        {
+          "title": "Vue study",
+          "message": "keep it",
+          "url": "/vueStudy",
           "id": "1"
         }],
         links: [
@@ -123,20 +137,43 @@ height: 1000px;
   overflow: scroll;
 }
 
+.page-number {
+  height: 50px;
+  text-align: center;
+}
+
 .bottom {
   padding: 20px 10px;
   display: block;
   width: calc(100% - 20px);
   height: 200px;
-  background-color: lightgreen;
+  background-color: black;
+}
+
+ul {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 li {
+  padding: 0px;
   list-style: none;
 }
 
-td a {
+dt {
+  color: white;
+  padding-left: 40px;
+}
+
+dl {
+  float: left;
+  width: 25%;
+}
+
+a {
   display: inline-block;
+  color: white;
+  height: 30px;
   width: 200px;
 }
 </style>

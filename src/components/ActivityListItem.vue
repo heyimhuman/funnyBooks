@@ -1,21 +1,29 @@
 <template>
-    <a href="#">
         <div class="activitylist">
         <h1>{{title}}</h1>
         <span>{{message}}</span>
+        <hr size="1px" width="500px" align="left" />
     </div>
-    </a>
 </template>
 
 <script>
 
 export default ({
     props: {
-        title: String,
-        message: String
+        title: {
+            type: String,
+            default: "default title"
+        },
+        message: {
+            type: String,
+            default: "here has not leave anything"
+        },
+        url: {
+            type: String
+        }
     },
     mounted() {
-        console.log("title:"+this.title+"\nmessage:"+this.message);
+        console.log("title:"+this.title+"\nmessage:"+this.message+"\nurl:"+this.url);
     },
     data() {
         return {
@@ -27,10 +35,9 @@ export default ({
 
 <style scoped>
 .activitylist {
+    text-align: left;
     background-color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    border-bottom: 1px solid black;
+    padding-bottom: 20px;
 }
 
 h1 {
