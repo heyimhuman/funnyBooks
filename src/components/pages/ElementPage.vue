@@ -1,8 +1,12 @@
 <script>
 // import router from '../../router/index'
-function push() {
+export default {
+    methods: {
+        push() {
     console.log("will push")
-    this.$router.push('/elementPage')
+    this.$router.push('/vueStudy')
+}
+    }
 }
 </script>
 
